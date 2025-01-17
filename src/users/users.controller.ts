@@ -37,15 +37,15 @@ export class UsersController {
 
     // GET/users/:id
     @Get(':id')
-    // @ApiOperation({ summary: 'Get a user by id' })
-    // @ApiResponse({ 
-    //     status: 200, 
-    //     description: 'Return the user',
-    // })
-    // @ApiResponse({ 
-    //     status: 404, 
-    //     description: 'User not found',
-    // })
+    @ApiOperation({ summary: 'Get a user by id' })
+    @ApiResponse({ 
+        status: 200, 
+        description: 'Return the user',
+    })
+    @ApiResponse({ 
+        status: 404, 
+        description: 'User not found',
+    })
     findOne(@Param('id') id: string) {
         return this.usersService.findOne(id);
     }
@@ -77,4 +77,13 @@ export class UsersController {
     remove(@Param('id') id: string) {
         return this.usersService.remove(id);
     }
+
+    @Get("/:id/stats")
+    getUserPerformanceData() {}
+
+    @Get("themes")
+    getAvailableThemes() {}
+
+    @Post("themes")
+    savesUsersThemes() {}
 }
